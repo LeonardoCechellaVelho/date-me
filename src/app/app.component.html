@@ -1,1 +1,12 @@
-<div>TEST DEPLOY</div>
+<div id="date-me" style="height: 50%; width: 80%; position: absolute; left: 10%; top: 20%;">
+    <div style="justify-content: center; display: flex;">
+        <h1>Quer Namorar Comigo?</h1>
+    </div>
+    <div style="justify-content: center; display: flex; margin-bottom: 10px;">
+        <button id="btn-yes" mat-button>Sim</button>
+        <button id="btn-no" *ngIf="condition !== 8" style="background-color: rgb(189, 69, 69);" mat-button (click)="changeButtonPosition()">Não</button>
+    </div>
+    <div style="justify-content: center; display: flex;">
+        <h4>{{hintText}}</h4>
+    </div>
+</div>
