@@ -1,5 +1,6 @@
-import {NgModule, Component, OnInit} from '@angular/core';
-import {YouTubePlayerModule} from '@angular/youtube-player';
+import { NgModule, Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {YouTubePlayer, YouTubePlayerModule} from '@angular/youtube-player';
 
 let apiLoaded = false;
 
@@ -8,9 +9,18 @@ let apiLoaded = false;
   templateUrl: './date-me-video.component.html',
   styleUrls: ['./date-me-video.component.scss']
 })
-export class DateMeVideoComponent implements OnInit {
+export class DateMeVideoComponent implements OnInit, AfterViewInit {
+  @ViewChild('youtubePlayer') player: YouTubePlayer | undefined;
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  ngAfterViewInit(): void {
+    this.player?.stateChange.subscribe(state => {
+      if (this.player?.getPlayerState() === 0) {
+        this.router.navigate(['/date']);
+      }
+    })
+  }
 
   ngOnInit(): void {
     if (!apiLoaded) {

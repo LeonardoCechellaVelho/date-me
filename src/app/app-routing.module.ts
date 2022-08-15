@@ -4,7 +4,7 @@ import { DateMePuzzleComponent } from './date-me-puzzle/date-me-puzzle.component
 import { DateMeVideoComponent } from './date-me-video/date-me-video.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/date', pathMatch: 'full' },
+  { path: '', redirectTo: '/video', pathMatch: 'full' },
   { path: 'video', component: DateMeVideoComponent },
   { path: 'date', component: DateMePuzzleComponent }
 ];
