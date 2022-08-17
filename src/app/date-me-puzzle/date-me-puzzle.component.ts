@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-date-me-puzzle',
   templateUrl: './date-me-puzzle.component.html',
   styleUrls: ['./date-me-puzzle.component.scss']
 })
-export class DateMePuzzleComponent implements OnInit {
+export class DateMePuzzleComponent {
   buttonNo!: HTMLElement | null;
   buttonYes!: HTMLElement | null;
   dateMeDiv!: HTMLElement | null;
@@ -14,17 +15,14 @@ export class DateMePuzzleComponent implements OnInit {
   buttonTop: string | undefined;
   buttonLeft: string | undefined;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(private router: Router) { }
 
 
   changeButtonPosition() {
     this.buttonNo = document.getElementById('btn-no');
     this.dateMeDiv = document.getElementById('date-me');
 
-    this.condition = this.condition >= 10 ? 0 : this.condition + 1;
+    this.condition = this.condition >= 8 ? 0 : this.condition + 1;
     this.handleCondition(this.condition);
 
     if (this.dateMeDiv) {
@@ -36,8 +34,12 @@ export class DateMePuzzleComponent implements OnInit {
         this.buttonNo.style.position = 'absolute';
       }
     }
-    
-    
+  }
+
+  accept() {
+    if (this.condition === 8) {
+      this.router.navigate(['/accept']);
+    }
   }
 
   handleCondition(condition: number) {
@@ -78,8 +80,6 @@ export class DateMePuzzleComponent implements OnInit {
           this.buttonYes.style.zIndex = '10';
         }
         this.hintText = 'Pronto, agora só tem a opção correta'
-        break;
-      default:
         break;
     }
   }
