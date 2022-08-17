@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:900i&display=swap');
+
 .insideText {
     position: absolute;
     text-align: center;
-    margin-left: 37%;
-    margin-top: 19%;
-    font-family: cursive;
-    font-size: 25px;
+    margin-left: 47%;
+    margin-top: 22%;
+	font-family: 'Montserrat', sans-serif;
     color: white;
     font-weight: bolder;
     text-shadow: black 2px 2px;
-    animation:pulse 2s infinite;
     user-select: none;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    letter-spacing:0.1em;
+    text-shadow: 
+                          3px 3px #ff1f32,
+                          6px 6px #000000;
 }
 
 .img1 {
